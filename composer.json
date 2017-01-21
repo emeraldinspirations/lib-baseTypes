@@ -1,0 +1,24 @@
+{
+    "name": "emeraldinspirations/lib-baseTypes",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthew \"Juniper\" Barlett",
+            "email": "emeraldinspirations@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "repositories" : [
+      {
+        "packagist":false
+      }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "emeraldinspirations\\library\\baseTypes\\": "src/"
+        }
+    }
+}

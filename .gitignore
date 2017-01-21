@@ -1,0 +1,5 @@
+*.local.*
+/nbproject/
+/vendor/
+.*.swp
+/composer.lock
