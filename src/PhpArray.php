@@ -1,17 +1,153 @@
 <?php
 
+/**
+ * Container for PhpArray generic functions
+ *
+ * PHP Version 7
+ *
+ * @category  Library
+ * @package   BaseTypes
+ * @author    Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
+ * @copyright 2017 Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
+ * @license   MIT ../LICENSE.md
+ * @link      https://github.com/emeraldinspirations/lib-baseTypes
+ */
+
 namespace emeraldinspirations\library\baseTypes;
 
-class PhpArray {
+/**
+ * PhpArray generic functions
+ *
+ * @category  Library
+ * @package   BaseTypes
+ * @author    Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
+ * @copyright 2017 Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
+ * @license   MIT ../LICENSE.md
+ * @version   GIT: $Id:$ In Development.
+ * @link      https://github.com/emeraldinspirations/lib-baseTypes
+ */
+class PhpArray
+{
 
     /**
-     * @author Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
+     * Return an array containing elements only in one of the supplied arrays
+     *
+     * @param array $Array1 First array
+     * @param array $Array2 Second array
+     *
+     * @return array
      */
-    static function xor($pArray1, $pArray2) {
+    static function xor(array $Array1, array $Array2)
+    {
         return array_merge(
-            array_diff($pArray1, $pArray2),
-            array_diff($pArray2, $pArray1)
+            array_diff($Array1, $Array2),
+            array_diff($Array2, $Array1)
         );
     }
 
+    /**
+     * Iterate through array object, run callback each iteration
+     *
+     * @param array    $Array     Array to iterate
+     * @param callable $Callback  Function to run each iteration
+     *                            Function Parameters:
+     *                            $Key, $Value, $Carry, &$Break, ...&$Params
+     * @param various  $Initial   (Optional) Value $Carry is set to on first
+     *                            iteration
+     * @param various  ...$Params (Optional) Additional parameters to pass to
+     *                            $Callback
+     *
+     * @return various Value returned on last iteration
+     */
+    static function walkGeneric(
+        $Array,
+        callable $Callback,
+        $Initial = null,
+        ...$Params
+    ) {
+        return self::walkByRef(
+            $Array,
+            $Callback,
+            $Initial,
+            ...$Params
+        );
+    }
+
+    /**
+     * Iterate through array, run callback each iteration
+     *
+     * @param array    $Array     Array to iterate
+     * @param callable $Callback  Function to run each iteration
+     *                            Function Parameters:
+     *                            $Key, $Value, $Carry, &$Break, ...&$Params
+     * @param various  $Initial   (Optional) Value $Carry is set to on first
+     *                            iteration
+     * @param various  ...$Params (Optional) Additional parameters to pass to
+     *                            $Callback
+     *
+     * @return various Value returned on last iteration
+     */
+    static function walk(
+        array $Array,
+        callable $Callback,
+        $Initial = null,
+        ...$Params
+    ) {
+        return self::walkByRef(
+            $Array,
+            $Callback,
+            $Initial,
+            ...$Params
+        );
+    }
+
+    /**
+     * Iterate through array object, run callback each iteration
+     *
+     * This function passes all optional Parameters as reference
+     *
+     * @param array    $Array     Array to iterate
+     * @param callable $Callback  Function to run each iteration
+     *                            Function Parameters:
+     *                            $Key, $Value, $Carry, &$Break, ...&$Params
+     * @param various  $Initial   (Optional) Value $Carry is set to on first
+     *                            iteration
+     * @param various  ...$Params (Optional) Additional parameters to pass to
+     *                            $Callback
+     *
+     * @return various Value returned on last iteration
+     */
+    static function walkByRef(
+        $Array,
+        callable $Callback,
+        $Initial = null,
+        &...$Params
+    ) {
+
+        // Set default values
+        $Carry = $Initial;
+        $Break = false;
+
+        // Iterate through array
+        foreach ($Array as $Key => $Value) {
+
+            // Run callback function, keep results
+            $Carry = $Callback(
+                $Key,
+                $Value,
+                $Carry,
+                $Break,
+                ...$Params
+            );
+
+            // If callback sets $Break true, leave iteration
+            if ($Break) {
+                break;
+            }
+        }
+
+        // Return results
+        return $Carry;
+
+    }
 }
