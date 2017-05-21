@@ -169,13 +169,13 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             2,
             $Es,
-            'Fails if issue with scaler reference example'
+            'Fails if issue with scaler reference example (E count)'
         );
 
         $this->assertEquals(
             3,
             $Ls,
-            'Fails if issue with scaler reference example'
+            'Fails if issue with scaler reference example (L count)'
         );
 
     }
@@ -199,7 +199,7 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             'test',
-            PhpArray::walkGeneric($Array, $ArrayObject, ''),
+            PhpArray::walk($Array, $ArrayObject, ''),
             'Fails if issue with ArrayObject example'
         );
 

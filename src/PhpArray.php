@@ -46,37 +46,9 @@ class PhpArray
     }
 
     /**
-     * Iterate through array object, run callback each iteration
-     *
-     * @param array    $Array     Array to iterate
-     * @param callable $Callback  Function to run each iteration
-     *                            Function Parameters:
-     *                            $Key, $Value, $Carry, &$Break, ...&$Params
-     * @param various  $Initial   (Optional) Value $Carry is set to on first
-     *                            iteration
-     * @param various  ...$Params (Optional) Additional parameters to pass to
-     *                            $Callback
-     *
-     * @return various Value returned on last iteration
-     */
-    static function walkGeneric(
-        $Array,
-        callable $Callback,
-        $Initial = null,
-        ...$Params
-    ) {
-        return self::walkByRef(
-            $Array,
-            $Callback,
-            $Initial,
-            ...$Params
-        );
-    }
-
-    /**
      * Iterate through array, run callback each iteration
      *
-     * @param array    $Array     Array to iterate
+     * @param iterable $Array     Array to iterate
      * @param callable $Callback  Function to run each iteration
      *                            Function Parameters:
      *                            $Key, $Value, $Carry, &$Break, ...&$Params
@@ -84,11 +56,13 @@ class PhpArray
      *                            iteration
      * @param various  ...$Params (Optional) Additional parameters to pass to
      *                            $Callback
+     *
+     * @todo When PHP 7.1 released, type hint $Array as iterable
      *
      * @return various Value returned on last iteration
      */
     static function walk(
-        array $Array,
+        $Array,
         callable $Callback,
         $Initial = null,
         ...$Params
@@ -114,6 +88,8 @@ class PhpArray
      *                            iteration
      * @param various  ...$Params (Optional) Additional parameters to pass to
      *                            $Callback
+     *
+     * @todo When PHP 7.1 released, type hint $Array as iterable
      *
      * @return various Value returned on last iteration
      */
