@@ -99,7 +99,7 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             [1=>'One', 2=>'Two', 3=>'Three', 4=>'Four'],
-            PhpArray::walk($Array, $Map, ''),
+            PhpArray::walk($Array, $Map, []),
             'Fails if issue with array_map example'
         );
 
@@ -120,7 +120,7 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
             &$Break,
             &...$Params
         ) {
-            if (in_array($Value, $Params)) {
+            if ($Value == 'Kansas') {
                 $Break = true;
                 return $Key;
             }
@@ -133,7 +133,7 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(
             'KS',
-            PhpArray::walk($Array, $Search, '', 'Missouri', 'Kansas'),
+            PhpArray::walk($Array, $Search),
             'Fails if issue with array_map example'
         );
 
