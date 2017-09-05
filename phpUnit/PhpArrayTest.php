@@ -205,4 +205,71 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
 
     }
 
+
+    /**
+     * Verify maps to function inside array elements as supplied
+     *
+     * The `array_map` function can not (by default) map to a function of the
+     * elements the map contains.  This function implements this functionality.
+     *
+     * @return void
+     */
+    public function testMapElementFunction()
+    {
+
+        $Array = [
+            new class () {
+                /**
+                 * Dummy Function
+                 *
+                 * @param mixed ...$Append (optional) Dummy parameters
+                 *
+                 * @return mixed
+                 */
+                public function test(...$Append)
+                {
+                    return 'A' . implode('', $Append);
+                }
+            },
+            new class () {
+                /**
+                 * Dummy Function
+                 *
+                 * @param mixed ...$Append (optional) Dummy parameters
+                 *
+                 * @return mixed
+                 */
+                public function test(...$Append)
+                {
+                    return 'B' . implode('', $Append);
+                }
+            },
+            new class () {
+                /**
+                 * Dummy Function
+                 *
+                 * @param mixed ...$Append (optional) Dummy parameters
+                 *
+                 * @return mixed
+                 */
+                public function test(...$Append)
+                {
+                    return 'C' . implode('', $Append);
+                }
+            }
+        ];
+
+        $this->assertEquals(
+            ['A', 'B', 'C'],
+            PhpArray::mapElementFunction('Test', $Array),
+            'Fails if function undefined or map not done'
+        );
+
+        $this->assertEquals(
+            ['A123', 'B123', 'C123'],
+            PhpArray::mapElementFunction('Test', $Array, 1, 2, 3),
+            'Fails if function params not passed'
+        );
+    }
+
 }

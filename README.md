@@ -7,43 +7,46 @@ manipulating base PHP datatypes.
 
 ## Installing / Getting started
 
-This project has no dependencies, so can be cloned directly from the git repo
-
-### Clone with HTTPS
-
-```shell
-git clone https://github.com/emeraldinspirations/lib-baseTypes.git
-```
-
-### Clone with SSH
+This project has no dependencies, so can simply be required with
+[composer](https://getcomposer.org/)
 
 ```shell
-git clone git@github.com:emeraldinspirations/lib-baseTypes.git
-```
-
-### Require with Composer
-
-Add the following lines to your `composer.json` file
-
-```json
-    "repositories" : [
-        {
-            "type" : "vcs",
-            "url" : "https://github.com/emeraldinspirations/lib-baseTypes.git"
-        },
-    ],
-    "require": {
-        "emeraldinspirations/lib-baseTypes":"*"
-    },    
+composer require emeraldinspirations/lib-helper-array
 ```
 
 ## Features
 
-(Section not completed)
+- mapElementFunction - Do an `array_map` using a function inside the array
+elements
 
-## Example
+### Example - mapElementFunction
 
-(Section not completed)
+```php
+<?php
+
+use emeraldinspirations\library\helper\phpArray\PhpArray;
+
+class DummyObject
+{
+    public function test(...$Append)
+    {
+        return $Char . implode('', $Append);
+    }
+    public function __construct($Char)
+    {
+        $this->Char = $Char;
+    }
+}
+
+$Array = [
+    new DummyObject('A'),
+    new DummyObject('B'),
+    new DummyObject('C'),
+];
+
+PhpArray::mapElementFunction('Test', $Array, 1, 2, 3);
+// Returns: ['A123', 'B123', 'C123']
+```
 
 ## Contributing
 

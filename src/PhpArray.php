@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Container for PhpArray generic functions
@@ -126,4 +126,33 @@ class PhpArray
         return $Carry;
 
     }
+
+    /**
+     * Do an `array_map` using a function inside the array elements
+     *
+     * The `array_map` function can not (by default) map to a function of the
+     * elements the map contains.  This function implements this functionality.
+     *
+     * @param string $FunctionName The name of the function inside each
+     *        respective element to call
+     * @param array  $Array        The array to map
+     * @param mixed  ...$Params    (optional) The parameters for the respective
+     *        functions
+     *
+     * @return array
+     */
+    static function mapElementFunction(
+        string$FunctionName,
+        array $Array,
+        ...$Params
+    ) : array {
+        return array_map(
+            function ($Element) use ($FunctionName, $Params) {
+                return $Element->$FunctionName(...$Params);
+            },
+            $Array
+        );
+
+    }
+
 }
