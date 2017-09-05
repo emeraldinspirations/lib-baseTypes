@@ -16,8 +16,8 @@ composer require emeraldinspirations/lib-helper-array
 
 ## Features
 
-- mapElementFunction - Do an `array_map` using a function inside the array
-elements
+- [mapElementFunction](#example---mapelementfunction) - Do an `array_map` using
+a function inside the array elements
 
 ### Example - mapElementFunction
 
