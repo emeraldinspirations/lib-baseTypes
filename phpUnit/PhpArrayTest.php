@@ -36,9 +36,9 @@ class PhpArrayTest extends \PHPUnit_Framework_TestCase
      */
     public function testXor()
     {
-        $Array1         = ['Foo', 'FooBar', 'Bar'];
-        $Array2         = ['foo', 'Bar', 'bar'];
-        $Array_Expected = ['Foo', 'FooBar', 'foo', 'bar'];
+        $Array1         = ['Foo', 'FooBar',        'Bar'       ];
+        $Array2         = [                 'foo', 'Bar', 'bar'];
+        $Array_Expected = ['Foo', 'FooBar', 'foo',        'bar'];
 
         $this->assertEquals(
             $Array_Expected,

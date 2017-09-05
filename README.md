@@ -18,6 +18,7 @@ composer require emeraldinspirations/lib-helper-array
 
 - [mapElementFunction](#example---mapelementfunction) - Do an `array_map` using
 a function inside the array elements
+- [xor](#example---xor) - Return an array containing elements only in one of the supplied arrays
 
 ### Example - mapElementFunction
 
@@ -44,8 +45,25 @@ $Array = [
     new DummyObject('C'),
 ];
 
-PhpArray::mapElementFunction('Test', $Array, 1, 2, 3);
+return PhpArray::mapElementFunction('Test', $Array, 1, 2, 3);
+
 // Returns: ['A123', 'B123', 'C123']
+```
+
+### Example - xor
+
+```php
+<?php
+
+use emeraldinspirations\library\helper\phpArray\PhpArray;
+
+$Array1         = ['Foo', 'FooBar',        'Bar'       ];
+$Array2         = [                 'foo', 'Bar', 'bar'];
+
+return PhpArray::xor($Array1, $Array2),
+
+// Returns:       ['Foo', 'FooBar', 'foo',        'bar'];
+
 ```
 
 ## Contributing
