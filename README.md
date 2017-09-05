@@ -1,7 +1,6 @@
 ![Logo of the project](http://vps56132.vps.ovh.ca/logo.gitHub.png)
-
-# baseTypes
-> A component of emeraldinspiration's library.
+# lib-helper-array
+> A helper in [emeraldinspiration](https://github.com/emeraldinspirations)'s [library](https://github.com/emeraldinspirations/library).
 
 The goal of this project is to hold commonly used functions that assist in
 manipulating base PHP datatypes.
@@ -43,11 +42,6 @@ Add the following lines to your `composer.json` file
 (Section not completed)
 
 ## Example
-
-(Section not completed)
-
-## Documentation
-Further documentation is available thanks to [phpDocumentor2](https://www.phpdoc.org/) and [PHPDocumentor Markdown generator](https://github.com/evert/phpdoc-md):
 
 (Section not completed)
 

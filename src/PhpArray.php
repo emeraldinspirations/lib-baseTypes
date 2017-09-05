@@ -6,25 +6,25 @@
  * PHP Version 7
  *
  * @category  Library
- * @package   BaseTypes
+ * @package   Helper-Array
  * @author    Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
  * @copyright 2017 Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
  * @license   MIT ../LICENSE.md
- * @link      https://github.com/emeraldinspirations/lib-baseTypes
+ * @link      https://github.com/emeraldinspirations/lib-helper-array
  */
 
-namespace emeraldinspirations\library\baseTypes;
+namespace emeraldinspirations\library\helper\phpArray;
 
 /**
  * PhpArray generic functions
  *
  * @category  Library
- * @package   BaseTypes
+ * @package   Helper-Array
  * @author    Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
  * @copyright 2017 Matthew "Juniper" Barlett <emeraldinspirations@gmail.com>
  * @license   MIT ../LICENSE.md
- * @version   GIT: $Id:$ In Development.
- * @link      https://github.com/emeraldinspirations/lib-baseTypes
+ * @version   GIT: $Id$ In Development.
+ * @link      https://github.com/emeraldinspirations/lib-helper-array
  */
 class PhpArray
 {

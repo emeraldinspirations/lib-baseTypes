@@ -1,5 +1,5 @@
 {
-    "name": "emeraldinspirations/lib-baseTypes",
+    "name": "emeraldinspirations/lib-helper-array",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -9,16 +9,11 @@
         }
     ],
     "minimum-stability": "dev",
-    "repositories" : [
-      {
-        "packagist":false
-      }
-    ],
     "require": {
     },
     "autoload": {
         "psr-4": {
-            "emeraldinspirations\\library\\baseTypes\\": "src/"
+            "emeraldinspirations\\library\\helper\\phpArray\\": "src/"
         }
     }
 }
